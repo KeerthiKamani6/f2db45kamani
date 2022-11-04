@@ -1,0 +1,14 @@
+extends layout
+block content
+  h1= title
+  - let results=[{width:5, color:"green", style:"gel"},{width:4, color:"yellow", style:"fountain"},{width:9, color:"black", style:"roller"}]
+  div(class="container-fluid")
+  div(class="row")
+  each value,index in results
+    div(class="col-sm-2" onclick=`buy(${index})`) width #{value.width} of color #{value.color} with style #{value.style}
+  script.
+    function buy(index)
+    {
+      alert(`Your purchased Item ${index+1}`)
+    }
+   
