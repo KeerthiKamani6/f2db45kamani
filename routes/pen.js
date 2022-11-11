@@ -1,7 +1,12 @@
 var express = require('express');
+const pen_controllers= require('../controllers/pen');
 var router = express.Router();
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('pen', { title: 'search Results' });
-});
+
+/* GET television */ 
+router.get('/', pen_controllers.pen_view_all_Page );
+  // GET request for one costume. 
+router.get('/:id', pen_controllers.pen_detail); 
+router.put('/:id', pen_controllers.pen_update_put); 
+ 
+
 module.exports = router;

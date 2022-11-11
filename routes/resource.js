@@ -1,4 +1,3 @@
- 
 var express = require('express'); 
 var router = express.Router(); 
  
@@ -7,26 +6,23 @@ var api_controller = require('../controllers/api');
 var pen_controller = require('../controllers/pen'); 
  
 /// API ROUTE /// 
+ router.get('/',api_controller.api);
  
-// GET resources base. 
-router.get('/', api_controller.api); 
- 
-/// COSTUME ROUTES /// 
+/// pen ROUTES /// 
  
 // POST request for creating a Pen.  
-router.post('/pens', pen_controller.pen_create_post); 
+router.post('/pen', pen_controller.pen_create_post); 
  
 // DELETE request to delete Pen. 
-router.delete('/pens/:id', pen_controller.pen_delete); 
+router.delete('/pen/:id', pen_controller.pen_delete); 
  
 // PUT request to update Pen. 
-router.put('/pens/:id', pen_controller.pen_update_put); 
+router.put('/pen/:id', pen_controller.pen_update_put); 
  
-// GET request for one Costume. 
-router.get('/pens/:id', pen_controller.pen_detail); 
+// GET request for one pen. 
+router.get('/pen/:id', pen_controller.pen_detail); 
  
-// GET request for list of all Costume items. 
-router.get('/pens', pen_controller.pen_list); 
+// GET request for list of all pen items. 
+router.get('/pen', pen_controller.pen_list); 
  
 module.exports = router; 
- 

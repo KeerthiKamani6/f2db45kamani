@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var pen = require('./models/pen');
 
 require('dotenv').config(); 
 const connectionString =  
@@ -84,14 +85,14 @@ style:"ball"});
   style:"balpoint"}); 
     instance2.save( function(err,doc) { 
         if(err) return console.error(err); 
-        console.log("First object saved") 
+        console.log("second object saved") 
     });  
     let instance3 = new 
     Pen({width:26,  color:'green', 
     style:"nib"}); 
       instance3.save( function(err,doc) { 
           if(err) return console.error(err); 
-          console.log("First object saved") 
+          console.log("third object saved") 
       }); 
 } 
  
