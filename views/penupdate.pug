@@ -2,43 +2,46 @@ extends layout
 
 block content
   h1= title
- 
-   - let penid = toShow._id
-   - let penwidth = toShow.width
-   - let pencolor = toShow.color
-   - let penstyle = toShow.style
+  if(toShow=null)
+   h2 No instance to update 
+  else 
+    - let penid = toShow._id
+    - let penwidth = toShow.width
+    - let pencolor = toShow.color
+    - let penstyle = toShow.style
+    
   
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{penid}
+    div.row(class='mb-2')
+      div.mr-1 ID is
+      div #{penid}
   - let actionid = "/resource/pen/" + penid
-  form(id='PenForm', action= actionid, method="PUT")
-    div.form-group
-        label.penAttr(for='style') pen style
-        input#style(type='text', name='style', value= style )
-    div.form-group
-        label.penAttr(for='color') pen color
-        input#color(type='text', name='color', value= color )
-    div.form-group
+    form(id='PenForm', action= actionid, method="PUT")
+      div.form-group
+         label.penAttr(for='style') pen style
+         input#style(type='text', name='style', value= style )
+      div.form-group
+         label.penAttr(for='color') pen color
+         input#color(type='text', name='color', value= color )
+      div.form-group
         label.penAttr(for='width') pen width
         input#width(type='number', name='width', value= width )
-    input(type="submit")
+      input(type="submit")
     
 
-  script.
-    document.forms['PenForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show user that form is being submitted
-      fetch(event.target.action, {
-        method: 'PUT',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Update succeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Update failed " + error )
+    script.
+      document.forms['PenForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+         method: 'PUT',
+         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+         alert("Update succeded")
+         // TODO handle body
+        }).catch((error) => {
+         // TODO handle error
+         alert("Update failed " + error )
+       });
       });
-    });

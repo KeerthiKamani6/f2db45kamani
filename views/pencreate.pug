@@ -1,34 +1,32 @@
 extends layout
 
-block content
-  h1= title
+block content 
+    form(id='penForm', action="/resource/pen", method="POST")
+     div.form-group
+         label.penAttr(for='style') pen Style
+         input#style(type='text', name='style')
+     div.form-group
+         label.penAttr(for='color') pen Color
+         input#color(type='text', name='color')
+     div.form-group
+         label.penAttr(for='width') pen width
+         input#width(type='number', name='width')
+     input(type="submit")
 
-  form(id='penForm', action="/resource/pen", method="POST")
-    div.form-group
-        label.penAttr(for='style') pen Style
-        input#style(type='text', name='style')
-    div.form-group
-        label.penAttr(for='color') pen Color
-        input#color(type='text', name='color')
-    div.form-group
-        label.penAttr(for='width') pen width
-        input#width(type='number', name='width')
-    input(type="submit")
-
-  script.
-    document.forms['penForm'].addEventListener('submit', (event) => {
-      event.preventDefault();
-      // TODO do something here to show user that form is being submitted
-      fetch(event.target.action, {
-        method: 'POST',
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-      }).then((resp) => {
-        return resp.json(); // or resp.text() or whatever the server sends
-      }).then((body) => {
-        alert("Save succeded")
-        // TODO handle body
-      }).catch((error) => {
-        // TODO handle error
-        alert("Save failed " + error )
-      });
-    });
+   script.
+     document.forms['penForm'].addEventListener('submit', (event) => {
+       event.preventDefault();
+       // TODO do something here to show user that form is being submitted
+       fetch(event.target.action, {
+         method: 'POST',
+         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+       }).then((resp) => {
+         return resp.json(); // or resp.text() or whatever the server sends
+       }).then((body) => {
+         alert("Save succeded")
+         // TODO handle body
+       }).catch((error) => {
+         // TODO handle error
+         alert("Save failed " + error )
+       });
+     });

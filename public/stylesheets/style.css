@@ -10,3 +10,9 @@ a {
   background-color: greenyellow; 
   width: 250px; 
 } 
+
+.penStyle { 
+  background-color: greenyellow; 
+  color:red;
+  width: 250px; 
+}
