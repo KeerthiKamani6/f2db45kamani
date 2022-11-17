@@ -1,55 +1,53 @@
 extends layout 
  
 block content 
-  h1= title
-  if(toShow=null)
-    h2 No instance to update 
-  else 
-   if (toShow == null) 
+  h1= title 
+ 
+  if (toShow == null) 
     h2 No instance to delete 
   else 
-    - let penid = toShow._id
-    - let penwidth = toShow.width
-    - let pencolor = toShow.color
-    - let penstyle = toShow.style
-    - let actionid = "/resource/pen/" + penid 
-     script let actionid = "#{actionid}" 
-     div 
-       div.row 
-         div(class='penAttr mr-3') Pen ID is: 
-         div #{penid} 
-       div.row 
-         div(class='penAttr mr-3') Pen Style is: 
-         div #{penstyle} 
-       div.row 
-         div(class='penAttr mr-3') Pen Color is: 
-         div #{pencolor} 
-       div.row 
-         div(class='penAttr mr-3') Pen width is: 
-         div #{penwidth}
+   - let penid = toShow._id
+   - let penwidth = toShow.width
+   - let pencolor = toShow.color
+   - let penstyle = toShow.style
+   - let actionid = "/resource/pen/" + penid 
+    script let actionid = "#{actionid}" 
+    div 
+      div.row 
+        div(class='penAttr mr-3') Pen ID is: 
+        div #{penid} 
+      div.row 
+        div(class='penAttr mr-3') Pen Style is: 
+        div #{penstyle} 
+      div.row 
+        div(class='penAttr mr-3') Pen Color is: 
+        div #{pencolor} 
+      div.row 
+        div(class='penAttr mr-3') Pen width is: 
+        div #{penwidth}
  
-     button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
-     button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
  
-   script. 
-     function cancel() { 
-       // Go back to the home page for the pen collection 
-       window.location.href='/pen' 
-     } 
-   script. 
-     function deleteOnid() { 
-       console.log("starting delete") 
-       // delete first 
-       fetch(actionid, { 
-         method: 'DELETE'      // Don't need a body for the delete 
-       }).then((resp) => { 
-         return resp.json(); // or resp.text() or whatever the server sends 
-       }).then((body) => { 
-         alert("Delete succeded") 
-         window.location.href='/pen' 
-         // TODO handle body 
-       }).catch((error) => { 
-         // TODO handle error 
-         alert("Delete failed " + error ) 
-       }); 
-     }
+  script. 
+    function cancel() { 
+      // Go back to the home page for the pen collection 
+      window.location.href='/pen' 
+    } 
+  script. 
+    function deleteOnid() { 
+      console.log("starting delete") 
+      // delete first 
+      fetch(actionid, { 
+        method: 'DELETE'      // Don't need a body for the delete 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Delete succeded") 
+        window.location.href='/pen' 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Delete failed " + error ) 
+      }); 
+    }
