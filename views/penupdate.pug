@@ -14,7 +14,7 @@ block content
     div.row(class='mb-2')
       div.mr-1 ID is
       div #{penid}
-  - let actionid = "/resource/pen/" + penid
+    - let actionid = "/resource/pen/" + penid
     form(id='PenForm', action= actionid, method="PUT")
       div.form-group
          label.penAttr(for='style') pen style

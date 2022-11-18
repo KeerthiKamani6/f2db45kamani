@@ -1,14 +1,28 @@
 extends layout
+
 block content
   h1= title
-  - let results=[{width:5, color:"green", style:"gel"},{width:4, color:"yellow", style:"fountain"},{width:9, color:"black", style:"roller"}]
   div(class="container-fluid")
+  // - let results=[{width:24,style:"nib",color:"red",{width:25,style:"ball",color:"green"},{width:22,style:"soft touch",color:"black"}]
+  - let items = results 
+    div(class="container-fluid") 
+  div(class="row") 
+    each item in items  
+      - let destination = `dispatch(\"/pen/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{item.width}(#{item.style}) is #{item.color} 
+         button.btn( class="btn-primary ml-1", onclick= destination) Update 
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
   div(class="row")
-  each value,index in results
-    div(class="col-sm-2" onclick=`buy(${index})`) width #{value.width} of color #{value.color} with style #{value.style}
+    each value,index in results
+        div(class="col-sm-2" onclick=`buy(${index})`)  width #{value.width} , style #{value.style}, color  #{value.color}
   script.
     function buy(index)
     {
       alert(`Your purchased Item ${index+1}`)
     }
-   
+
+ 
+ 
