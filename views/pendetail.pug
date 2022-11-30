@@ -1,25 +1,24 @@
 extends layout 
  
 block content 
-  h1= title
-  if(toShow=null)
-    h2 No instance to update 
-  else  
-    - let penid = toShow._id
-    - let penwidth = toShow.width
+  h1= title 
+  if (toShow == null) 
+    h2 No instance to Update View 
+  else
+    - let penid = toShow._id 
+    - let penwidth = toShow.width 
+    - let penstyle = toShow.style 
     - let pencolor = toShow.color
-    - let penstyle = toShow.style
-
-    div 
-     div.row 
-       div(class='penStyle mr-3') pen ID is: 
-       div #{penid} 
-     div.row 
-       div(class='penStyle mr-3')  penwidth is: 
-       div #{penwidth} 
-     div.row 
-       div(class='penStyle mr-3') pencolor is: 
-       div #{pencolor} 
-     div.row 
-       div(class='penStyle mr-3') penstyle is: 
-       div #{penstyle}
+    div(class='justify-content-center p-2 text-center text-dark',style='background-color:#d0ff00')
+      div.row 
+        div(class='penAttr mr-3') pen ID is: 
+        div #{penid} 
+      div.row 
+        div(class='penAttr mr-3') pen width is: 
+        div #{penwidth} 
+      div.row 
+        div(class='penAttr mr-3') pen style is: 
+        div #{penstyle} 
+      div.row 
+        div(class='penAttr mr-3') pen Color is: 
+        div #{pencolor}
